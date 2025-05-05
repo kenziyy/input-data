@@ -187,6 +187,10 @@
         currentInput += number;
         $('#formatted-phone').val(formatPhoneNumber(currentInput));
         $('#raw-phone').val(currentInput);
+        
+        if (navigator.vibrate) {
+    navigator.vibrate(100); // Getaran selama 100ms
+  }
       });
 
       $('#delete').click(function () {
