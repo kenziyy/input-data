@@ -5,19 +5,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ruang Data Telemedia</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/self.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&family=PT+Sans&family=Barlow&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
   <style>
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      font-family: Arial, sans-serif;
+      font-family: 'PT Sans', sans-serif;
       background-color: #ffffff;
     }
 
@@ -36,72 +34,108 @@
       cursor: pointer;
     }
 
-    /* Tombol Calculator */
-    .calculator .button {
-      font-size: 20px;
+    .calculator {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
       padding: 20px;
-      background-color: #0d3769;
+      background-color: #f9f9f9;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .calculator .button,
+    .calculator .button-x {
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 20px;
       color: white;
       border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-align: center;
-      transition: background-color 0.3s ease; /* Smooth transition */
     }
 
-    /* Warna tombol saat hover */
+    .calculator .button {
+      background-color: #0d3769;
+    }
+
     .calculator .button:hover {
-      background-color: #f1c40f; /* Ubah warna jadi kuning saat hover */
+      background-color: #e67817;
     }
 
-    /* Warna tombol saat ditekan (active) */
     .calculator .button:active {
-      background-color: #f1c40f; /* Ubah warna jadi kuning saat tombol ditekan */
+      transform: scale(0.95);
     }
 
-    /* Modal Bootstrap sudah otomatis berada di tengah */
-    .modal-dialog {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .calculator .button-x {
+      background-color: #c64543;
+    }
+
+    .calculator .button-x:hover {
+      background-color: #e0423f;
+    }
+
+    .login-row-area {
+      border: 1px solid #00000044;
+      border-radius: 15px;
+      padding: 30px;
+      animation: fadeInUp 0.6s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .alert {
+      font-size: 1.2rem;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .modal-content {
+      border-radius: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .calculator {
+        margin-top: 20px;
+        padding: 10px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .login-row-area {
+        padding: 15px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- Overlay klik -->
   <div id="click-overlay">Klik di mana saja untuk memulai</div>
 
-  <!-- Konten utama -->
-  <section class="form-login container-fluid mt-5 pt-2" id="main-content" style="display: none;">
+  <section class="form-login container mt-5 pt-2" id="main-content" style="display: none;">
     <form class="mt-3" action="#" method="post">
       <div class="row justify-content-center">
-        <div class="login-row-area col-7">
-          <div class="login-opening text-center">
-            <img class="img-fluid" src="assets/logo.png" alt="RuangData">
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-lg-11">
-              <div class="login-row">
-                <p class="login-form-title">MASUKAN NOMOR :</p>
-                <input type="text" class="form-control" id="formatted-phone" autocomplete="off"
-                  autofocus readonly required>
-                <input type="hidden" id="raw-phone" name="nomor" required>
-              </div>
+        <div class="col-12 col-md-7 mb-4">
+          <div class="login-row-area">
+            <div class="login-opening text-center mb-3">
+              <img class="img-fluid" src="assets/logo.png" alt="RuangData">
             </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-lg-11">
-              <div class="login-btn-area text-center">
-                <button class="login-btn px-5 py-1" type="submit">LANJUTKAN</button>
-              </div>
+            <div class="mb-3">
+              <p class="login-form-title text-center">MASUKAN NOMOR :</p>
+              <input type="text" class="form-control" id="formatted-phone" autocomplete="off" autofocus readonly required>
+              <input type="hidden" id="raw-phone" name="nomor" required>
+            </div>
+            <div class="text-center">
+              <button class="login-btn px-5 py-2" type="submit">LANJUTKAN</button>
             </div>
           </div>
         </div>
-        <div class="col-4">
+
+        <div class="col-12 col-md-5">
           <div class="calculator">
             <a class="button" data-number="1">1</a>
             <a class="button" data-number="2">2</a>
@@ -117,24 +151,28 @@
             <a class="button-x" id="delete"><i class="fas fa-backspace"></i></a>
           </div>
         </div>
-        <div class="col-lg-11 my-3">
-          <p class="alert-text align-items-center text-center" style="font-size: 20px">
-            - CEK KEMBALI NOMOR ANDA -
-          </p>
+
+        <div class="col-12 mt-4">
+          <p class="alert-text text-center">- CEK KEMBALI NOMOR ANDA DIBAWAH INI -</p>
+        </div>
+        <div class="col-12">
+          <div class="alert alert-primary" role="alert">
+            <p class="alert-text my-color" style="font-size: 35px">???</p>
+          </div>
         </div>
       </div>
     </form>
   </section>
 
-  <!-- Popup Modal -->
+  <!-- Modal -->
   <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content text-center">
         <div class="modal-header">
-          <h5 class="modal-title" id="successModalLabel">Nomor Berhasil Disimpan</h5>
+          <h5 class="modal-title">Nomor Berhasil Disimpan</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body text-center">
+        <div class="modal-body">
           <img src="assets/ceklis.png" alt="Ceklis" class="img-fluid mb-3" style="max-width: 100px;">
           <p>Nomor berhasil disimpan!</p>
         </div>
@@ -145,6 +183,7 @@
     </div>
   </div>
 
+  <!-- Scripts -->
   <script>
     $(document).ready(function () {
       let currentInput = '';
@@ -159,31 +198,20 @@
         return value;
       }
 
-      // Saat overlay diklik
       $('#click-overlay').on('click', function () {
         const elem = document.body;
         if (elem.requestFullscreen) {
           elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) {
-          elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-          elem.msRequestFullscreen();
         }
-
-        $('#click-overlay').hide();
-        $('#main-content').show();
+        $('#click-overlay').fadeOut();
+        $('#main-content').fadeIn();
       });
 
-      // Input nomor
       $('.button[data-number]').click(function () {
         const number = $(this).data('number');
         currentInput += number;
         $('#formatted-phone').val(formatPhoneNumber(currentInput));
         $('#raw-phone').val(currentInput);
-        
-        if (navigator.vibrate) {
-    navigator.vibrate(100); // Getaran selama 100ms
-  }
       });
 
       $('#delete').click(function () {
@@ -206,24 +234,19 @@
           return;
         }
 
-	navigator.clipboard.writeText(nomor).catch(function (error) {
-    console.error("Gagal menyalin nomor: ", error);
-  });
-        
-        // Kosongkan form setelah tombol Lanjutkan ditekan
-        currentInput = ''; // Reset input yang sudah dimasukkan
-        $('#formatted-phone').val(''); // Kosongkan tampilan nomor
-        $('#raw-phone').val(''); // Kosongkan data nomor yang disimpan
+        currentInput = '';
+        $('#formatted-phone').val('');
+        $('#raw-phone').val('');
 
-        // Tampilkan modal popup
+        navigator.clipboard.writeText(nomor).then(function () {
+          console.log("Nomor berhasil disalin ke clipboard!");
+        });
+
         $('#successModal').modal('show');
       });
     });
   </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    crossorigin="anonymous"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
-</html>
+</html>

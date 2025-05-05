@@ -1,225 +1,99 @@
-.form-login {
-    position: relative;
-    background-color: #fff;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'PT Sans', sans-serif;
+  background-color: #ffffff;
 }
 
-.form-login .alert-area {
-    margin: 0;
+#click-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
 }
-
-.form-login .alert {
-    margin: 0;
-    padding: 8px 4px 8px 8px;
-    border-radius: 10px;
-    border: 1px solid #00000044;
-}
-
-.form-login .alert-text {
-    font-family: 'Barlow';
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0;
-}
-
-.form-login .alert-icon {
-    width: 30px;
-    height: 30px;
-    margin: 0 10px 2px 0;
-}
-
-.form-login .alert-close {
-    transition: 0.3s;
-    background-color: transparent;
-    border: none;
-    opacity: 75%;
-}
-
-.form-login .alert-close:hover {
-    opacity: 100%;
-}
-
-.form-login .alert-close-icon {
-    width: 25px;
-    height: 25px;
-}
-
-.form-login .login-opening {
-    margin: 15px 0;
-}
-
-.form-login .login-text-opening {
-    font-family: 'Rubik';
-    font-size: 25px;
-    font-weight: 600;
-    margin: 0;
-}
-
-.form-login .login-mini-text-opening {
-    font-family: 'PT Sans';
-    font-size: 15px;
-    margin: 0;
-}
-
-.form-login .login-hl-opening {
-    text-decoration: none;
-    font-family: 'PT Sans';
-    font-size: 15px;
-    margin: 0;
-    color: #e67817;
-}
-
-.form-login .form-control {
-    font-family: 'PT Sans';
-    font-size: 20px;
-    font-weight: 400;
-    border-radius: 3px;
-    border: 1px solid #00000044;
-    margin: 10px 0 0 0;
-    padding: 10px;
-}
-
-.form-login .form-control:focus {
-    box-shadow: 0 0 1px 2px #0d3769;
-}
-
-.form-login .form-select {
-    font-family: 'PT Sans';
-    font-size: 15px;
-    font-weight: 400;
-    border-radius: 3px;
-    border: 1px solid #00000044;
-    margin: 10px 0 0 0;
-    padding: 10px;
-}
-
-.form-login .form-select:focus {
-    box-shadow: 0 0 1px 2px #0d3769;
-}
-
-.form-login .form-option {
-    font-size: 18px;
-    color: #fff;
-    background-color: #0d3769;
-}
-
-.form-login .selected {
-    display: none;
-}
-
-.form-login .login-error {
-    font-family: 'PT Sans';
-    font-size: 15px;
-    margin: 10px 0 0 0;
-    color: #e0423f;
-}
-
-.form-login .login-line {
-    margin: 30px 0 20px 0;
-    border-color: #00000044;
-    opacity: 100%;
-}
-
-.form-login .login-row-area {
-    border: 1px solid #00000044;
-    border-radius: 10px;
-    padding: 15px 30px 30px 30px;
-}
-
-.form-login .login-row {
-    margin: 15px 0 0 0;
-}
-
-.form-login .login-form-title {
-    font-family: 'Rubik';
-    font-size: 18px;
-    font-weight: 600;
-    margin: 15px 0 0 0;
-}
-
-.form-login .login-form-info {
-    font-family: 'PT Sans';
-    font-size: 15px;
-    margin: 0 0 5px 0;
-    opacity: 50%;
-}
-
-.form-login .login-btn-area {
-    margin: 30px 0 0 0;
-}
-
-.form-login .login-btn {
-    transition: 0.3s;
-    font-family: 'Barlow';
-    font-size: 18px;
-    font-weight: 600;
-    text-decoration: none;
-    margin: 0 5px 0 0;
-    padding: 2px 30px;
-    border: none;
-    border-radius: 3px;
-    color: #fff;
-    background-color: #0d3769;
-}
-
-.form-login .login-btn:hover {
-    background-color: #e67817;
-}
-
-.form-login .login-btn2 {
-    transition: 0.3s;
-    font-family: 'Barlow';
-    font-size: 18px;
-    font-weight: 600;
-    text-decoration: none;
-    margin: 0 5px 0 0;
-    padding: 4px 30px;
-    border: none;
-    border-radius: 3px;
-    color: #fff;
-    background-color: #c64543;
-}
-
-.form-login .login-btn2:hover {
-    background-color: #e0423f;
-}
-
-.form-login .my-color {
-    color: #0d3769;
-}
 
 .calculator {
-    display: grid;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.calculator .button,
+.calculator .button-x {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 20px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.calculator .button {
+  background-color: #0d3769;
+}
+
+.calculator .button:hover {
+  background-color: #e67817;
+}
+
+.calculator .button:active {
+  transform: scale(0.95);
+}
+
+.calculator .button-x {
+  background-color: #c64543;
+}
+
+.calculator .button-x:hover {
+  background-color: #e0423f;
+}
+
+.login-row-area {
+  border: 1px solid #00000044;
+  border-radius: 15px;
+  padding: 30px;
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.alert {
+  font-size: 1.2rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.modal-content {
+  border-radius: 15px;
+}
+
+@media (max-width: 768px) {
+  .calculator {
+    margin-top: 20px;
+    padding: 10px;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #00000044;
-}
+  }
 
-.button {
-    font-size: 20px;
-    padding: 20px;
-    background-color: #0d3769;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button:hover {
-    background-color: #e67817;
-}
-
-.button-x {
-    font-size: 20px;
-    padding: 20px;
-    background-color: #c64543;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button-x:hover {
-    background-color: #e0423f;
+  .login-row-area {
+    padding: 15px;
+  }
 }
