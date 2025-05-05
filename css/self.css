@@ -118,6 +118,35 @@ body {
     font-size: 16px;
   }
 
+  .calculator-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.calculator .button,
+.calculator .button-x {
+  width: 100%;
+  padding: 16px 0;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  text-align: center;
+  display: block;
+}
+
+@media (max-width: 576px) {
+  .calculator-grid {
+    gap: 8px;
+  }
+
+  .calculator .button,
+  .calculator .button-x {
+    padding: 14px 0;
+    font-size: 18px;
+  }
+  
   .login-btn {
     font-size: 16px;
     padding: 8px 20px;
