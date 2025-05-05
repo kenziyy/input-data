@@ -175,21 +175,24 @@
                 }
                 return value;
             }
-            $("#enter-fullscreen").on("click", function () {
-                const body = $("body")[0];
-                if (body.requestFullscreen) {
-                    body.requestFullscreen();
-                } else if (body.webkitRequestFullscreen) {
-                    body.webkitRequestFullscreen();
-                } else if (body.msRequestFullscreen) {
-                    body.msRequestFullscreen();
-                } else {
-                    alert("Fullscreen API tidak didukung di browser Anda.");
-                }
-                $(this).prop("disabled", true);
-                $("#splash-screen").hide();
-                $("#main-content").show();
-            });
+           $("#enter-fullscreen").on("click", function () {
+    try {
+        const body = document.body;
+        if (body.requestFullscreen) {
+            body.requestFullscreen().catch(() => {}); // catch untuk browser yang menolak
+        } else if (body.webkitRequestFullscreen) {
+            body.webkitRequestFullscreen();
+        } else if (body.msRequestFullscreen) {
+            body.msRequestFullscreen();
+        }
+    } catch (e) {
+        console.warn("Fullscreen gagal: ", e);
+    }
+
+    $(this).prop("disabled", true);
+    $("#splash-screen").hide();
+    $("#main-content").show();
+});
             $('.button[data-number]').click(function () {
                 const number = $(this).data('number');
                 currentInput += number;
@@ -225,6 +228,7 @@
         alert("Nomor berhasil disalin ke clipboard: " + nomor);
     }, function (err) {
         alert("Gagal menyalin ke clipboard: " + err);
+        });
 
                 $('#data-full').text(numbers.join(','));
                 // $('body > *').hide();
