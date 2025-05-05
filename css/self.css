@@ -185,4 +185,41 @@
 
 .form-login .my-color {
     color: #0d3769;
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #00000044;
+}
+
+.button {
+    font-size: 20px;
+    padding: 20px;
+    background-color: #0d3769;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #e67817;
+}
+
+.button-x {
+    font-size: 20px;
+    padding: 20px;
+    background-color: #c64543;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-x:hover {
+    background-color: #e0423f;
 }
