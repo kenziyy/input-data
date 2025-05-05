@@ -5,188 +5,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ruang Data Telemedia</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="css/self.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&family=PT+Sans&family=Barlow&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'PT Sans', sans-serif;
-      background-color: #ffffff;
-    }
-
-    .login-btn {
-  background-color: #0d3769;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.login-btn:hover {
-  background-color: #e67817;
-}
-
-.login-btn:active {
-  transform: scale(0.95);
-}
-    
-    #click-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: white;
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    .calculator {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      padding: 20px;
-      background-color: #f9f9f9;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .calculator .button,
-    .calculator .button-x {
-      font-size: 1.2rem;
-      font-weight: bold;
-      padding: 20px;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .calculator .button {
-      background-color: #0d3769;
-    }
-
-    .calculator .button:hover {
-      background-color: #e67817;
-    }
-
-    .calculator .button:active {
-      transform: scale(0.95);
-    }
-
-    .calculator .button-x {
-      background-color: #c64543;
-    }
-
-    .calculator .button-x:hover {
-      background-color: #e0423f;
-    }
-
-    .login-row-area {
-      border: 1px solid #00000044;
-      border-radius: 15px;
-      padding: 30px;
-      animation: fadeInUp 0.6s ease-in-out;
-    }
-
-    @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    .alert {
-      font-size: 1.2rem;
-      text-align: center;
-      border-radius: 10px;
-    }
-
-    .modal-content {
-      border-radius: 15px;
-    }
-
-    @media (max-width: 768px) {
-      .calculator {
-        margin-top: 20px;
-        padding: 10px;
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .login-row-area {
-        padding: 15px;
-      }
-    }
-  </style>
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+  <!-- Overlay klik -->
   <div id="click-overlay">Klik di mana saja untuk memulai</div>
 
+  <!-- Konten utama -->
   <section class="form-login container mt-5 pt-2" id="main-content" style="display: none;">
     <form class="mt-3" action="#" method="post">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-7 mb-4">
-          <div class="login-row-area">
-            <div class="login-opening text-center mb-3">
-              <img class="img-fluid" src="assets/logo.png" alt="RuangData">
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-6 col-md-10 col-12">
+          <div class="login-row-area shadow-sm p-4 bg-white rounded">
+            <div class="login-opening text-center mb-4">
+              <img class="img-fluid" src="assets/logo.png" alt="RuangData" style="max-height: 80px;">
             </div>
-            <div class="mb-3">
-              <p class="login-form-title text-center">MASUKAN NOMOR :</p>
-              <input type="text" class="form-control" id="formatted-phone" autocomplete="off" autofocus readonly required>
+            <div class="login-row">
+              <p class="login-form-title">MASUKAN NOMOR :</p>
+              <input type="text" class="form-control text-center fs-4" id="formatted-phone" autocomplete="off" autofocus readonly required>
               <input type="hidden" id="raw-phone" name="nomor" required>
             </div>
-            <div class="text-center">
-              <button class="login-btn px-5 py-2" type="submit">LANJUTKAN</button>
+            <div class="login-btn-area text-center mt-4">
+              <button class="login-btn px-5 py-2 shadow-sm" type="submit">LANJUTKAN</button>
             </div>
           </div>
         </div>
-
-        <div class="col-12 col-md-5">
-          <div class="calculator">
-            <a class="button" data-number="1">1</a>
-            <a class="button" data-number="2">2</a>
-            <a class="button" data-number="3">3</a>
-            <a class="button" data-number="4">4</a>
-            <a class="button" data-number="5">5</a>
-            <a class="button" data-number="6">6</a>
-            <a class="button" data-number="7">7</a>
-            <a class="button" data-number="8">8</a>
-            <a class="button" data-number="9">9</a>
-            <a class="button-x" id="clear"><i class="fa-solid fa-trash-can"></i></a>
-            <a class="button" data-number="0">0</a>
-            <a class="button-x" id="delete"><i class="fas fa-backspace"></i></a>
+        <div class="col-lg-4 col-md-8 col-12">
+          <div class="calculator shadow-sm bg-light p-4 rounded">
+            <div class="row g-2">
+              <div class="col-4"><a class="button w-100" data-number="1">1</a></div>
+              <div class="col-4"><a class="button w-100" data-number="2">2</a></div>
+              <div class="col-4"><a class="button w-100" data-number="3">3</a></div>
+              <div class="col-4"><a class="button w-100" data-number="4">4</a></div>
+              <div class="col-4"><a class="button w-100" data-number="5">5</a></div>
+              <div class="col-4"><a class="button w-100" data-number="6">6</a></div>
+              <div class="col-4"><a class="button w-100" data-number="7">7</a></div>
+              <div class="col-4"><a class="button w-100" data-number="8">8</a></div>
+              <div class="col-4"><a class="button w-100" data-number="9">9</a></div>
+              <div class="col-4"><a class="button-x w-100" id="clear"><i class="fa-solid fa-trash-can"></i></a></div>
+              <div class="col-4"><a class="button w-100" data-number="0">0</a></div>
+              <div class="col-4"><a class="button-x w-100" id="delete"><i class="fas fa-backspace"></i></a></div>
+            </div>
           </div>
         </div>
-
-        <div class="col-12 mt-4">
-          <p class="alert-text text-center">- CEK KEMBALI NOMOR ANDA DIBAWAH INI -</p>
-        </div>
-        <div class="col-12">
-          <div class="alert alert-primary" role="alert">
-            <p class="alert-text my-color" style="font-size: 35px">???</p>
-          </div>
+        <div class="col-12 text-center">
+          <p class="alert-text mt-3" style="font-size: 20px">- CEK KEMBALI NOMOR ANDA -</p>
         </div>
       </div>
     </form>
   </section>
 
-  <!-- Modal -->
+  <!-- Modal popup -->
   <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content text-center">
         <div class="modal-header">
-          <h5 class="modal-title">Nomor Berhasil Disimpan</h5>
+          <h5 class="modal-title" id="successModalLabel">Nomor Berhasil Disimpan</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -200,7 +78,6 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script>
     $(document).ready(function () {
       let currentInput = '';
@@ -217,11 +94,12 @@
 
       $('#click-overlay').on('click', function () {
         const elem = document.body;
-        if (elem.requestFullscreen) {
-          elem.requestFullscreen();
-        }
-        $('#click-overlay').fadeOut();
-        $('#main-content').fadeIn();
+        if (elem.requestFullscreen) elem.requestFullscreen();
+        else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
+        else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
+
+        $('#click-overlay').hide();
+        $('#main-content').show();
       });
 
       $('.button[data-number]').click(function () {
@@ -229,6 +107,7 @@
         currentInput += number;
         $('#formatted-phone').val(formatPhoneNumber(currentInput));
         $('#raw-phone').val(currentInput);
+        if (navigator.vibrate) navigator.vibrate(100);
       });
 
       $('#delete').click(function () {
@@ -246,24 +125,21 @@
       $('form').on('submit', function (event) {
         event.preventDefault();
         const nomor = $('#raw-phone').val();
-        if (!nomor) {
-          alert("Nomor belum diisi!");
-          return;
-        }
+        if (!nomor) return alert("Nomor belum diisi!");
+
+        navigator.clipboard.writeText(nomor).catch(function (error) {
+          console.error("Gagal menyalin nomor: ", error);
+        });
 
         currentInput = '';
         $('#formatted-phone').val('');
         $('#raw-phone').val('');
-
-        navigator.clipboard.writeText(nomor).then(function () {
-          console.log("Nomor berhasil disalin ke clipboard!");
-        });
-
         $('#successModal').modal('show');
       });
     });
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
