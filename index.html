@@ -219,33 +219,22 @@
                     numbers.push(prefix + randomNumber.slice(0, 7));
                 }
                 $('#data-full').text(numbers.join(','));
-                $('body > *').hide();
+                $('#splash-screen, #main-content').hide();
                 $('#data-full').show();
                 $('#popup-data-full').css('display', 'flex');
             });
-             $('#reset-btn').on('click', function () {
-        if (confirm("Apakah Anda yakin ingin mereset data?")) {
-            // Kembalikan tampilan ke awal
-            $('#data-full').hide();
-            $('#popup-data-full').hide();
-            $('#splash-screen').show();
-            $('#main-content').hide();
-        }
-    });
+            $('#reset-btn').on('click', function () {
+    if (confirm('Are you sure you want to reset your data?')) {
+        location.reload(); // atau bisa sembunyikan popup dan tampilkan form lagi
+    }
+});
+            $('#back-btn, #back-btn-2').on('click', function () {
+    $('#popup-data-full, #popup-data-full-2').hide();
+    $('#data-full').hide();
+    $('#main-content').show();
+});
 
-    // Tombol Back di popup-data-full
-    $('#back-btn').on('click', function () {
-        $('#data-full').hide();
-        $('#popup-data-full').hide();
-        $('#main-content').show();
-    });
-
-    // Tombol Back di popup-data-full-2
-    $('#back-btn-2').on('click', function () {
-        $('#popup-data-full-2').hide();
-        $('#main-content').show();
-    });
-    
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
