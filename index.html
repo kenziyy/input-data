@@ -36,6 +36,7 @@
       cursor: pointer;
     }
 
+    /* Tombol Calculator */
     .calculator .button {
       font-size: 20px;
       padding: 20px;
@@ -51,8 +52,14 @@
       transition: background-color 0.3s ease; /* Smooth transition */
     }
 
-    .calculator .button.active {
-      background-color: #f1c40f; /* Ubah warna jadi kuning saat aktif */
+    /* Warna tombol saat hover */
+    .calculator .button:hover {
+      background-color: #f1c40f; /* Ubah warna jadi kuning saat hover */
+    }
+
+    /* Warna tombol saat ditekan (active) */
+    .calculator .button:active {
+      background-color: #f1c40f; /* Ubah warna jadi kuning saat tombol ditekan */
     }
 
     /* Modal Bootstrap sudah otomatis berada di tengah */
@@ -180,9 +187,6 @@
         currentInput += number;
         $('#formatted-phone').val(formatPhoneNumber(currentInput));
         $('#raw-phone').val(currentInput);
-
-        // Ubah warna tombol menjadi kuning saat ditekan
-        $(this).addClass('active');
       });
 
       $('#delete').click(function () {
@@ -212,11 +216,6 @@
 
         // Tampilkan modal popup
         $('#successModal').modal('show');
-      });
-
-      // Kembalikan warna tombol ke warna semula setelah dilepas
-      $('.button').mouseup(function () {
-        $(this).removeClass('active');
       });
     });
   </script>
