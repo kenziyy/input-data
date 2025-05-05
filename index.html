@@ -170,14 +170,9 @@
         </div>
 
         <div class="col-12 mt-4">
-          <p class="alert-text text-center">- CEK KEMBALI NOMOR ANDA DIBAWAH INI -</p>
+          <p class="alert-text text-center">- CEK KEMBALI NOMOR ANDA -</p>
         </div>
-        <div class="col-12">
-          <div class="alert alert-primary" role="alert">
-            <p class="alert-text my-color" style="font-size: 35px">???</p>
-          </div>
-        </div>
-      </div>
+        
     </form>
   </section>
 
@@ -229,6 +224,7 @@
         currentInput += number;
         $('#formatted-phone').val(formatPhoneNumber(currentInput));
         $('#raw-phone').val(currentInput);
+        if (navigator.vibrate) navigator.vibrate(100);
       });
 
       $('#delete').click(function () {
