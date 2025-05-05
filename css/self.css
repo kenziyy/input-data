@@ -1,263 +1,188 @@
-@import url('https://fonts.cdnfonts.com/css/rubik');
-@import url('https://fonts.cdnfonts.com/css/pt-sans-2');
-@import url('https://fonts.cdnfonts.com/css/barlow');
+.form-login {
+    position: relative;
+    background-color: #fff;
+}
 
-.login-btn {
+.form-login .alert-area {
+    margin: 0;
+}
+
+.form-login .alert {
+    margin: 0;
+    padding: 8px 4px 8px 8px;
+    border-radius: 10px;
+    border: 1px solid #00000044;
+}
+
+.form-login .alert-text {
+    font-family: 'Barlow';
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.form-login .alert-icon {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px 2px 0;
+}
+
+.form-login .alert-close {
+    transition: 0.3s;
+    background-color: transparent;
+    border: none;
+    opacity: 75%;
+}
+
+.form-login .alert-close:hover {
+    opacity: 100%;
+}
+
+.form-login .alert-close-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.form-login .login-opening {
+    margin: 15px 0;
+}
+
+.form-login .login-text-opening {
+    font-family: 'Rubik';
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.form-login .login-mini-text-opening {
+    font-family: 'PT Sans';
+    font-size: 15px;
+    margin: 0;
+}
+
+.form-login .login-hl-opening {
+    text-decoration: none;
+    font-family: 'PT Sans';
+    font-size: 15px;
+    margin: 0;
+    color: #e67817;
+}
+
+.form-login .form-control {
+    font-family: 'PT Sans';
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 3px;
+    border: 1px solid #00000044;
+    margin: 10px 0 0 0;
+    padding: 10px;
+}
+
+.form-login .form-control:focus {
+    box-shadow: 0 0 1px 2px #0d3769;
+}
+
+.form-login .form-select {
+    font-family: 'PT Sans';
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 3px;
+    border: 1px solid #00000044;
+    margin: 10px 0 0 0;
+    padding: 10px;
+}
+
+.form-login .form-select:focus {
+    box-shadow: 0 0 1px 2px #0d3769;
+}
+
+.form-login .form-option {
+    font-size: 18px;
+    color: #fff;
+    background-color: #0d3769;
+}
+
+.form-login .selected {
+    display: none;
+}
+
+.form-login .login-error {
+    font-family: 'PT Sans';
+    font-size: 15px;
+    margin: 10px 0 0 0;
+    color: #e0423f;
+}
+
+.form-login .login-line {
+    margin: 30px 0 20px 0;
+    border-color: #00000044;
+    opacity: 100%;
+}
+
+.form-login .login-row-area {
+    border: 1px solid #00000044;
+    border-radius: 10px;
+    padding: 15px 30px 30px 30px;
+}
+
+.form-login .login-row {
+    margin: 15px 0 0 0;
+}
+
+.form-login .login-form-title {
+    font-family: 'Rubik';
+    font-size: 18px;
+    font-weight: 600;
+    margin: 15px 0 0 0;
+}
+
+.form-login .login-form-info {
+    font-family: 'PT Sans';
+    font-size: 15px;
+    margin: 0 0 5px 0;
+    opacity: 50%;
+}
+
+.form-login .login-btn-area {
+    margin: 30px 0 0 0;
+}
+
+.form-login .login-btn {
     transition: 0.3s;
     font-family: 'Barlow';
     font-size: 18px;
     font-weight: 600;
     text-decoration: none;
-    margin: 0px 5px 0px 0px;
-    padding: 2px 30px 2px 30px;
+    margin: 0 5px 0 0;
+    padding: 2px 30px;
     border: none;
     border-radius: 3px;
     color: #fff;
     background-color: #0d3769;
 }
 
-.login-btn:hover {
-    transition: 0.3s;
+.form-login .login-btn:hover {
     background-color: #e67817;
 }
 
-.calculator {
-    border: 1px solid;
-    border-radius: 10px;
-    border-color: #00000044;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    opacity: 100%;
-}
-
-.button {
-    text-decoration: none;
+.form-login .login-btn2 {
+    transition: 0.3s;
     font-family: 'Barlow';
-    color: #fff;
-    background-color: #0d3769;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0 5px 0 0;
+    padding: 4px 30px;
     border: none;
-    padding: 20px;
-    font-size: 20px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.button:hover {
-    transition: 0.3s;
-    background-color: #e67817;
-}
-
-.button-x {
-    text-decoration: none;
-    font-family: 'Barlow';
+    border-radius: 3px;
     color: #fff;
     background-color: #c64543;
-    border: none;
-    padding: 20px;
-    font-size: 20px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 5px;
 }
 
-.button-x:hover {
-    transition: 0.3s;
+.form-login .login-btn2:hover {
     background-color: #e0423f;
 }
 
-.form-login {
-    position: relative;
-    background-color: #fff;
-
-    .alert-area {
-        margin: 0px 0px 0px 0px;
-    }
-
-    .alert {
-        margin: 0px;
-        padding: 8px 4px 8px 8px;
-        border-radius: 10px;
-        border: 1px solid;
-        border-color: #00000044;
-    }
-
-    .alert-text {
-        font-family: 'Barlow';
-        font-size: 15px;
-        font-weight: 600;
-        margin: 0px;
-    }
-
-    .alert-icon {
-        width: 30px;
-        height: 30px;
-        margin: 0px 10px 2px 0px;
-    }
-
-    .alert-close {
-        transition: 0.3s;
-        background-color: transparent;
-        border: none;
-        opacity: 75%;
-    }
-
-    .alert-close:hover {
-        transition: 0.3s;
-        opacity: 100%;
-    }
-
-    .alert-close-icon {
-        width: 25px;
-        height: 25px;
-    }
-
-    .login-opening {
-        margin: 15px 0px 15px 0px;
-    }
-
-    .login-text-opening {
-        font-family: 'Rubik';
-        font-size: 25px;
-        font-weight: 600;
-        margin: 0px;
-    }
-
-    .login-mini-text-opening {
-        font-family: 'PT Sans';
-        font-size: 15px;
-        margin: 0px;
-    }
-
-    .login-hl-opening {
-        text-decoration: none;
-        font-family: 'PT Sans';
-        font-size: 15px;
-        margin: 0px;
-        color: #e67817;
-    }
-
-    .form-control {
-        font-family: 'PT sans';
-        font-size: 20px;
-        font-weight: 400;
-        border-radius: 3px;
-        border-color: #00000044;
-        margin: 10px 0px 0px 0px;
-        padding: 10px;
-    }
-
-    .form-control:focus {
-        box-shadow: 0px 0px 1px 2px #0d3769;
-    }
-
-    .form-select {
-        font-family: 'PT sans';
-        font-size: 15px;
-        font-weight: 400;
-        border-radius: 3px;
-        border-color: #00000044;
-        margin: 10px 0px 0px 0px;
-        padding: 10px;
-    }
-
-    .form-select:focus {
-        box-shadow: 0px 0px 1px 2px #0d3769;
-    }
-
-    .form-option {
-        font-size: 18px;
-        color: #fff;
-        background-color: #0d3769;
-    }
-
-    .selected {
-        display: none;
-    }
-
-    .login-error {
-        font-family: 'PT Sans';
-        font-size: 15px;
-        margin: 10px 0px 0px 0px;
-        color: #e0423f;
-    }
-
-    .login-line {
-        margin: 30px 0px 20px 0px;
-        border-color: #00000044;
-        opacity: 100%;
-    }
-
-    .login-row-area {
-        border: 1px solid;
-        border-radius: 10px;
-        padding: 15px 30px 30px 30px;
-        border-color: #00000044
-    }
-
-    .login-row {
-        margin: 15px 0px 0px 0px;
-    }
-
-    .login-form-title {
-        font-family: 'Rubik';
-        font-size: 18px;
-        font-weight: 600;
-        margin: 15px 0px 0px 0px;
-    }
-
-    .login-form-info {
-        font-family: 'PT Sans';
-        font-size: 15px;
-        margin: 0px 0px 5px 0px;
-        opacity: 50%;
-    }
-
-    .login-btn-area {
-        margin: 30px 0px 0px 0px;
-    }
-
-    .login-btn {
-        transition: 0.3s;
-        font-family: 'Barlow';
-        font-size: 18px;
-        font-weight: 600;
-        text-decoration: none;
-        margin: 0px 5px 0px 0px;
-        padding: 2px 30px 2px 30px;
-        border: none;
-        border-radius: 3px;
-        color: #fff;
-        background-color: #0d3769;
-    }
-
-    .login-btn:hover {
-        transition: 0.3s;
-        background-color: #e67817;
-    }
-
-    .login-btn2 {
-        transition: 0.3s;
-        font-family: 'Barlow';
-        font-size: 18px;
-        font-weight: 600;
-        text-decoration: none;
-        margin: 0px 5px 0px 0px;
-        padding: 4px 30px 4px 30px;
-        border: none;
-        border-radius: 3px;
-        color: #fff;
-        background-color: #c64543;
-    }
-
-    .login-btn2:hover {
-        transition: 0.3s;
-        background-color: #e0423f;
-    }
-
-    .my-color {
-        color: #0d3769;
-    }
+.form-login .my-color {
+    color: #0d3769;
 }
