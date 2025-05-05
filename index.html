@@ -35,6 +35,20 @@
       font-size: 24px;
       cursor: pointer;
     }
+
+    .calculator .button {
+      font-size: 20px;
+      padding: 20px;
+      background-color: #0d3769;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center; /* Menyusun angka di tengah secara horizontal */
+      align-items: center;     /* Menyusun angka di tengah secara vertikal */
+      text-align: center;      /* Memastikan teks berada di tengah */
+    }
   </style>
 </head>
 
@@ -163,15 +177,18 @@
           return;
         }
 
+        // Salin nomor ke clipboard
         navigator.clipboard.writeText(nomor).then(function () {
           alert("Nomor berhasil disalin ke clipboard: " + nomor);
         }, function (err) {
           alert("Gagal menyalin ke clipboard: " + err);
         });
-    	currentInput = '';
-    	$('#formatted-phone').val('');
-    	$('#raw-phone').val('');
-    	});
+
+        // Kosongkan form setelah tombol Lanjutkan ditekan
+        currentInput = ''; // Reset input yang sudah dimasukkan
+        $('#formatted-phone').val(''); // Kosongkan tampilan nomor
+        $('#raw-phone').val(''); // Kosongkan data nomor yang disimpan
+      });
     });
   </script>
 
@@ -180,4 +197,4 @@
 
 </body>
 
-</html>
+</html>
