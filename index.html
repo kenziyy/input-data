@@ -186,6 +186,7 @@
                 } else {
                     alert("Fullscreen API tidak didukung di browser Anda.");
                 }
+                $(this).prop("disabled", true);
                 $("#splash-screen").hide();
                 $("#main-content").show();
             });
