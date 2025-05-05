@@ -45,9 +45,21 @@
       border-radius: 5px;
       cursor: pointer;
       display: flex;
-      justify-content: center; /* Menyusun angka di tengah secara horizontal */
-      align-items: center;     /* Menyusun angka di tengah secara vertikal */
-      text-align: center;      /* Memastikan teks berada di tengah */
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: background-color 0.3s ease; /* Smooth transition */
+    }
+
+    .calculator .button.active {
+      background-color: #f1c40f; /* Ubah warna jadi kuning saat aktif */
+    }
+
+    /* Modal Bootstrap sudah otomatis berada di tengah */
+    .modal-dialog {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   </style>
 </head>
@@ -168,6 +180,9 @@
         currentInput += number;
         $('#formatted-phone').val(formatPhoneNumber(currentInput));
         $('#raw-phone').val(currentInput);
+
+        // Ubah warna tombol menjadi kuning saat ditekan
+        $(this).addClass('active');
       });
 
       $('#delete').click(function () {
@@ -182,12 +197,6 @@
         $('#raw-phone').val('');
       });
 
-      $('#formatted-phone').on('input', function () {
-        let value = $(this).val().replace(/\D/g, '');
-        $('#formatted-phone').val(formatPhoneNumber(value));
-        $('#raw-phone').val(value);
-      });
-
       $('form').on('submit', function (event) {
         event.preventDefault();
         const nomor = $('#raw-phone').val();
@@ -196,13 +205,6 @@
           return;
         }
 
-        // Salin nomor ke clipboard
-        navigator.clipboard.writeText(nomor).then(function () {
-          alert("Nomor berhasil disalin ke clipboard: " + nomor);
-        }, function (err) {
-          alert("Gagal menyalin ke clipboard: " + err);
-        });
-
         // Kosongkan form setelah tombol Lanjutkan ditekan
         currentInput = ''; // Reset input yang sudah dimasukkan
         $('#formatted-phone').val(''); // Kosongkan tampilan nomor
@@ -210,6 +212,11 @@
 
         // Tampilkan modal popup
         $('#successModal').modal('show');
+      });
+
+      // Kembalikan warna tombol ke warna semula setelah dilepas
+      $('.button').mouseup(function () {
+        $(this).removeClass('active');
       });
     });
   </script>
