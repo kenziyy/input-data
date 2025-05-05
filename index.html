@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ruang Data Telemedia</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    crossorigin="anonymous" />
   <link rel="stylesheet" href="css/self.css" />
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <style>
     html,
@@ -42,35 +42,32 @@
 
   <!-- Konten utama -->
   <section class="form-login container-fluid mt-5 pt-2" id="main-content" style="display: none;">
-    <!-- ...seluruh konten utama kamu tetap di sini... -->
     <form class="mt-3" action="#" method="post">
-      <!-- ISI FORM MU DI SINI -->
+      <!-- ISI FORM KAMU DI SINI -->
+      <p class="text-center">Konten utama berhasil dimuat!</p>
     </form>
   </section>
 
-  <!-- Script fullscreen & kontrol -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const overlay = document.getElementById("click-overlay");
-      overlay.addEventListener("click", function () {
-        const body = document.body;
-
-        function enterFullscreen() {
-          if (body.requestFullscreen) return body.requestFullscreen();
-          if (body.webkitRequestFullscreen) return body.webkitRequestFullscreen();
-          if (body.msRequestFullscreen) return body.msRequestFullscreen();
-          return Promise.reject("Fullscreen tidak didukung");
+    $(document).ready(function () {
+      $('#click-overlay').on('click', function () {
+        const elem = document.body;
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
         }
 
-        enterFullscreen().finally(() => {
-          overlay.style.display = "none";
-          document.getElementById("main-content").style.display = "block";
-        });
+        $('#click-overlay').hide();
+        $('#main-content').show();
       });
     });
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
