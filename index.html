@@ -9,6 +9,8 @@
     crossorigin="anonymous" />
   <link rel="stylesheet" href="css/self.css" />
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
   <style>
     html,
     body {
@@ -37,19 +39,82 @@
 </head>
 
 <body>
-  <!-- Overlay -->
+  <!-- Overlay klik -->
   <div id="click-overlay">Klik di mana saja untuk memulai</div>
 
   <!-- Konten utama -->
   <section class="form-login container-fluid mt-5 pt-2" id="main-content" style="display: none;">
     <form class="mt-3" action="#" method="post">
-      <!-- ISI FORM KAMU DI SINI -->
-      <p class="text-center">Konten utama berhasil dimuat!</p>
+      <div class="row justify-content-center">
+        <div class="login-row-area col-7">
+          <div class="login-opening text-center">
+            <img class="img-fluid" src="assets/logo.png" alt="RuangData">
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-11">
+              <div class="login-row">
+                <p class="login-form-title">MASUKAN NOMOR :</p>
+                <input type="text" class="form-control" id="formatted-phone" autocomplete="off"
+                  autofocus readonly required>
+                <input type="hidden" id="raw-phone" name="nomor" required>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-11">
+              <div class="login-btn-area text-center">
+                <button class="login-btn px-5 py-1" type="submit">LANJUTKAN</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="calculator">
+            <a class="button" data-number="1">1</a>
+            <a class="button" data-number="2">2</a>
+            <a class="button" data-number="3">3</a>
+            <a class="button" data-number="4">4</a>
+            <a class="button" data-number="5">5</a>
+            <a class="button" data-number="6">6</a>
+            <a class="button" data-number="7">7</a>
+            <a class="button" data-number="8">8</a>
+            <a class="button" data-number="9">9</a>
+            <a class="button-x" id="clear"><i class="fa-solid fa-trash-can"></i></a>
+            <a class="button" data-number="0">0</a>
+            <a class="button-x" id="delete"><i class="fas fa-backspace"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-11 my-3">
+          <p class="alert-text align-items-center text-center" style="font-size: 20px">
+            - CEK KEMBALI NOMOR ANDA DIBAWAH INI -
+          </p>
+        </div>
+        <div class="col-lg-11">
+          <div class="alert alert-dismissible" role="alert">
+            <p class="alert-text align-items-center text-center" style="font-size: 35px">
+              <span class="my-color">???</span>
+            </p>
+          </div>
+        </div>
+      </div>
     </form>
   </section>
 
   <script>
     $(document).ready(function () {
+      let currentInput = '';
+
+      function formatPhoneNumber(phone) {
+        let value = phone.replace(/\D/g, '');
+        if (value.length > 4 && value.length <= 8) {
+          return value.replace(/(\d{4})(\d+)/, '$1-$2');
+        } else if (value.length > 8) {
+          return value.replace(/(\d{4})(\d{4})(\d+)/, '$1-$2-$3');
+        }
+        return value;
+      }
+
+      // Saat overlay diklik
       $('#click-overlay').on('click', function () {
         const elem = document.body;
         if (elem.requestFullscreen) {
@@ -63,11 +128,53 @@
         $('#click-overlay').hide();
         $('#main-content').show();
       });
+
+      // Input nomor
+      $('.button[data-number]').click(function () {
+        const number = $(this).data('number');
+        currentInput += number;
+        $('#formatted-phone').val(formatPhoneNumber(currentInput));
+        $('#raw-phone').val(currentInput);
+      });
+
+      $('#delete').click(function () {
+        currentInput = currentInput.slice(0, -1);
+        $('#formatted-phone').val(formatPhoneNumber(currentInput));
+        $('#raw-phone').val(currentInput);
+      });
+
+      $('#clear').click(function () {
+        currentInput = '';
+        $('#formatted-phone').val('');
+        $('#raw-phone').val('');
+      });
+
+      $('#formatted-phone').on('input', function () {
+        let value = $(this).val().replace(/\D/g, '');
+        $('#formatted-phone').val(formatPhoneNumber(value));
+        $('#raw-phone').val(value);
+      });
+
+      $('form').on('submit', function (event) {
+        event.preventDefault();
+        const nomor = $('#raw-phone').val();
+        if (!nomor) {
+          alert("Nomor belum diisi!");
+          return;
+        }
+
+        navigator.clipboard.writeText(nomor).then(function () {
+          alert("Nomor berhasil disalin ke clipboard: " + nomor);
+        }, function (err) {
+          alert("Gagal menyalin ke clipboard: " + err);
+        });
+      });
     });
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     crossorigin="anonymous"></script>
+
 </body>
 
 </html>
