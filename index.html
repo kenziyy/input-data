@@ -209,6 +209,12 @@
           return;
         }
 
+	navigator.clipboard.writeText(nomor).then(function () {
+          alert("Nomor berhasil disalin ke clipboard: " + nomor);
+        }, function (err) {
+          alert("Gagal menyalin ke clipboard: " + err);
+        });
+        
         // Kosongkan form setelah tombol Lanjutkan ditekan
         currentInput = ''; // Reset input yang sudah dimasukkan
         $('#formatted-phone').val(''); // Kosongkan tampilan nomor
@@ -225,4 +231,4 @@
 
 </body>
 
-</html>
+</html>
