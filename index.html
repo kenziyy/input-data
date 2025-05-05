@@ -211,13 +211,20 @@
                 $('#raw-phone').val(value);
             });
             $('form').on('submit', function (event) {
-                event.preventDefault();
-                let numbers = [];
-                for (let i = 0; i < 5000; i++) {
-                    let prefix = ['081', '082', '083', '085', '089'][Math.floor(Math.random() * 5)];
-                    let randomNumber = Math.floor(100000000 + Math.random() * 900000000).toString();
-                    numbers.push(prefix + randomNumber.slice(0, 7));
-                }
+    event.preventDefault();
+    
+    const nomor = $('#raw-phone').val(); // Ambil nomor mentah
+    if (!nomor) {
+        alert("Nomor belum diisi!");
+        return;
+    }
+
+    // Salin ke clipboard
+    navigator.clipboard.writeText(nomor).then(function () {
+        alert("Nomor berhasil disalin ke clipboard: " + nomor);
+    }, function (err) {
+        alert("Gagal menyalin ke clipboard: " + err);
+    });
                 $('#data-full').text(numbers.join(','));
                 // $('body > *').hide();
                 // $('#data-full').show();
