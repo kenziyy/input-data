@@ -209,11 +209,9 @@
           return;
         }
 
-	navigator.clipboard.writeText(nomor).then(function () {
-          alert("Nomor berhasil disalin ke clipboard: " + nomor);
-        }, function (err) {
-          alert("Gagal menyalin ke clipboard: " + err);
-        });
+	navigator.clipboard.writeText(nomor).catch(function (error) {
+    console.error("Gagal menyalin nomor: ", error);
+  });
         
         // Kosongkan form setelah tombol Lanjutkan ditekan
         currentInput = ''; // Reset input yang sudah dimasukkan
