@@ -96,4 +96,21 @@ html, body {
   .login-row-area {
     padding: 15px;
   }
+  .login-btn {
+  background-color: #0d3769;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #e67817;
+}
+
+.login-btn:active {
+  transform: scale(0.95);
+  }
+    
 }
