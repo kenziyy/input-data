@@ -114,6 +114,25 @@
     </form>
   </section>
 
+  <!-- Popup Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalLabel">Nomor Berhasil Disimpan</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="assets/ceklis.png" alt="Ceklis" class="img-fluid mb-3" style="max-width: 100px;">
+          <p>Nomor berhasil disimpan!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     $(document).ready(function () {
       let currentInput = '';
@@ -188,6 +207,9 @@
         currentInput = ''; // Reset input yang sudah dimasukkan
         $('#formatted-phone').val(''); // Kosongkan tampilan nomor
         $('#raw-phone').val(''); // Kosongkan data nomor yang disimpan
+
+        // Tampilkan modal popup
+        $('#successModal').modal('show');
       });
     });
   </script>
