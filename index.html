@@ -94,10 +94,10 @@
       background-color: #e0423f;
     }
 
-    .calculator .button.clicked:hover {
-  background-color: #0d3769 !important; /* Warna default tombol */
-  cursor: default;
-    }
+  .calculator .button.clicked-temp {
+  background-color: #e67817 !important;
+}
+
     .login-row-area {
       border: 1px solid #00000044;
       border-radius: 15px;
@@ -230,7 +230,10 @@
         $('#formatted-phone').val(formatPhoneNumber(currentInput));
         $('#raw-phone').val(currentInput);
         if (navigator.vibrate) navigator.vibrate(100);
-        $this.addClass('clicked');
+        $this.addClass('clicked-temp');
+        setTimeout(() => {
+         $this.removeClass('clicked-temp');
+         }, 300);
       });
 
       $('#delete').click(function () {
