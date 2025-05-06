@@ -245,6 +245,7 @@
         $('#raw-phone').val(currentInput);
         const clickSound = document.getElementById('click-sound');
         if (clickSound) {
+        clickSound.volume = 0.5;
         clickSound.currentTime = 0; // restart sound
         clickSound.play();
       }
@@ -295,6 +296,7 @@
       $('#successModal').on('shown.bs.modal', function () {
   const successSound = document.getElementById('success-sound');
   if (successSound) {
+    clickSound.volume = 0.5;
     successSound.currentTime = 0;
     successSound.play();
   }
@@ -302,6 +304,7 @@
       $('#warningModal').on('shown.bs.modal', function () {
   const warnSound = document.getElementById('warn-sound');
   if (warnSound) {
+    clickSound.volume = 0.5;
     warnSound.currentTime = 0;
     warnSound.play();
   }
