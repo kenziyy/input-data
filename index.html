@@ -296,7 +296,7 @@
       $('#successModal').on('shown.bs.modal', function () {
   const successSound = document.getElementById('success-sound');
   if (successSound) {
-    clickSound.volume = 0.5;
+    successSound.volume = 0.5;
     successSound.currentTime = 0;
     successSound.play();
   }
@@ -304,7 +304,7 @@
       $('#warningModal').on('shown.bs.modal', function () {
   const warnSound = document.getElementById('warn-sound');
   if (warnSound) {
-    clickSound.volume = 0.5;
+    warnSound.volume = 0.5;
     warnSound.currentTime = 0;
     warnSound.play();
   }
