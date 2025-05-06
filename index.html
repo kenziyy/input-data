@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&family=PT+Sans&family=Barlow&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
+  <audio id="click-sound" src="assets/sounds/click.mp3" preload="auto"></audio>
+  
   <style>
     html, body {
       margin: 0;
@@ -75,9 +77,11 @@
     }
 
     
-    .calculator .button:active {
-      transform: scale(0.95);
+    .calculator .button.animate-click {
+  transform: scale(0.92);
+  transition: transform 0.1s ease;
     }
+    
 
     .calculator .button-x {
       background-color: #c64543;
@@ -218,11 +222,16 @@
         currentInput += number;
         $('#formatted-phone').val(formatPhoneNumber(currentInput));
         $('#raw-phone').val(currentInput);
+        const clickSound = document.getElementById('click-sound');
+        if (clickSound) {
+        clickSound.currentTime = 0; // restart sound
+        clickSound.play();
+      }
+        $this.addClass('animate-click clicked-temp');
+  setTimeout(() => {
+    $this.removeClass('animate-click clicked-temp');
+  }, 200);
         if (navigator.vibrate) navigator.vibrate(100);
-        $this.addClass('clicked-temp');
-        setTimeout(() => {
-         $this.removeClass('clicked-temp');
-         }, 300);
       });
 
       $('#delete').click(function () {
