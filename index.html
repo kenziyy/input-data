@@ -11,6 +11,8 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
   <audio id="click-sound" src="assets/sounds/click.mp3" preload="auto"></audio>
+  <audio id="success-sound" src="assets/sounds/sukses.mp3" preload="auto"></audio>
+  <audio id="warn-sound" src="assets/sounds/warn.mp3" preload="auto"></audio>
   
   <style>
     html, body {
@@ -288,8 +290,21 @@
         setTimeout(() => {
         $('#successModal').modal('hide');
 },      10000);
-        
       });
+      $('#successModal').on('shown.bs.modal', function () {
+  const successSound = document.getElementById('success-sound');
+  if (successSound) {
+    successSound.currentTime = 0;
+    successSound.play();
+  }
+});
+      $('#warningModal').on('shown.bs.modal', function () {
+  const warnSound = document.getElementById('warn-sound');
+  if (warnSound) {
+    warnSound.currentTime = 0;
+    warnSound.play();
+  }
+});
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
