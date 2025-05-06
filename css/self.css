@@ -108,5 +108,9 @@ html, body {
 .login-btn:active {
   transform: scale(0.95);
   }
-    
+
+  .calculator .button.clicked-temp {
+  background-color: #e67817 !important;
+  }
+  
   }
