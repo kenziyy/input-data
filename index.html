@@ -172,9 +172,25 @@ body.dark-mode .btn-close {
 .highlight-line {
   position: relative;
   display: inline-block;
-  font-size: 1rem;
-  padding: 0.2em 0.5em;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.4em 0.8em;
   overflow: hidden;
+  color: #0d3769;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeInZoom 0.8s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.5s;
+}
+.delay-2 {
+  animation-delay: 2.5s;
+}
+.delay-3 {
+  animation-delay: 4.5s;
 }
 
 .highlight-line::before {
@@ -184,20 +200,22 @@ body.dark-mode .btn-close {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: rgba(255, 161, 38, 0.3); /* Warna highlight kuning transparan */
-  animation: slideHighlight 8s linear infinite;
+  background: linear-gradient(120deg, rgba(255,255,0,0.3), rgba(255,255,255,0.5), rgba(255,255,0,0.3));
+  animation: slideHighlight 8s ease-in-out infinite;
+  z-index: 0;
 }
 
-.delay-1::before {
-  animation-delay: 0s;
-}
-
-.delay-2::before {
-  animation-delay: 2.6s;
-}
-
-.delay-3::before {
-  animation-delay: 5.2s;
+.highlight-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 15px rgba(255, 255, 0, 0.6);
+  animation: slideHighlight 8s ease-in-out infinite;
+  z-index: 1;
+  mix-blend-mode: screen;
 }
 
 @keyframes slideHighlight {
@@ -205,7 +223,17 @@ body.dark-mode .btn-close {
   50% { left: 0; }
   100% { left: 100%; }
 }
-    
+
+@keyframes fadeInZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
   #logo-img {
   max-width: 400px;
   height: auto;
