@@ -176,7 +176,7 @@ body.dark-mode .btn-close {
         <div class="col-12 col-md-7 mb-4">
           <div class="login-row-area">
             <div class="login-opening text-center mb-3">
-              <img class="img-fluid" src="assets/logo.png" alt="RuangData">
+              <img id="logo-img" class="img-fluid" src="assets/logo.png" alt="RuangData">
             </div>
             <div class="mb-3">
               <p class="login-form-title text-center">MASUKAN NOMOR :</p>
@@ -276,6 +276,13 @@ body.dark-mode .btn-close {
 
       $('#toggle-theme').click(function () {
   $('body').toggleClass('dark-mode');
+
+        const logo = $('#logo-img');
+  if ($('body').hasClass('dark-mode')) {
+    logo.attr('src', 'assets/logo-dark.png');
+  } else {
+    logo.attr('src', 'assets/logo.png');
+  }
 });
 
       $('.button[data-number]').click(function () {
