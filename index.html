@@ -120,6 +120,12 @@
         padding: 15px;
       }
 
+    .alert-text {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+    }
+    
       body.dark-mode {
   background-color: #212121 !important;
   color: #ffffff;
@@ -138,6 +144,10 @@ body.dark-mode .login-btn {
   color: #fff;
 }
 
+    body.dark-mode .alert-text {
+  color: #ddd;
+    }
+    
       body.dark-mode .modal-content {
   background-color: #2e2e2e;
   color: #ffffff;
@@ -215,7 +225,12 @@ body.dark-mode .btn-close {
         </div>
 
         <div class="col-12 mt-4">
-          <p class="alert-text text-center">- CEK KEMBALI NOMOR ANDA -</p>
+          <div class="alert-text text-center mt-4 px-2">
+  <p class="mb-2">Cek kembali nomor tujuan Anda dan pastikan nomor sudah dilanjutkan.</p>
+  <p class="mb-2">Kami tidak bertanggung jawab atas kesalahan input nomor oleh customer.</p>
+  <p class="mb-0">Terima kasih, semoga harimu menyenangkan.</p>
+          </div>
+          
         </div>
         
     </form>
