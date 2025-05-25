@@ -278,10 +278,31 @@ body.dark-mode .btn-close {
         if (elem.requestFullscreen) {
           elem.requestFullscreen();
         }
+        requestWakeLock();
         $('#click-overlay').fadeOut();
         $('#main-content').fadeIn();
       });
 
+      let wakeLock = null;
+
+async function requestWakeLock() {
+  try {
+    wakeLock = await navigator.wakeLock.request('screen');
+    wakeLock.addEventListener('release', () => {
+      console.log('Wake Lock was released');
+    });
+    console.log('Wake Lock is active');
+  } catch (err) {
+    console.error(`${err.name}, ${err.message}`);
+  }
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (wakeLock !== null && document.visibilityState === 'visible') {
+    requestWakeLock();
+  }
+});
+    
       $('#toggle-theme').click(function () {
   $('body').toggleClass('dark-mode');
 
