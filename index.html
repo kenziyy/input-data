@@ -226,6 +226,16 @@ body.dark-mode .highlight-line {
   }
 }
 
+    .history-number {
+  font-weight: 600;
+}
+.copy-btn {
+  border-radius: 6px;
+}
+body.dark-mode .copy-btn {
+  color: #fff;
+  border-color: #11b1bd;
+}
   #logo-img {
   max-width: 400px;
   height: auto;
@@ -342,7 +352,10 @@ body.dark-mode .highlight-line {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
       </div>
       <div class="modal-body">
-        <ul id="history-list" class="list-group list-group-flush"></ul>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+  <span class="history-number">${nomor}</span>
+  <button class="btn btn-sm btn-outline-primary copy-btn" data-number="${nomor}"><i class="fas fa-copy"></i></button>
+</li>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -432,12 +445,37 @@ $('#save-and-continue').on('click', function () {
   if (history.length === 0) {
     list.append('<li class="list-group-item text-muted">Belum ada nomor tersimpan.</li>');
   } else {
-    history.reverse().forEach(nomor => {
-      list.append(`<li class="list-group-item">${nomor}</li>`);
+    history.slice().reverse().forEach(nomor => {
+      list.append(`
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="history-number">${nomor}</span>
+          <button class="btn btn-sm btn-outline-primary copy-btn" data-number="${nomor}">
+            <i class="fas fa-copy"></i>
+          </button>
+        </li>
+      `);
     });
   }
 
   $('#historyModal').modal('show');
+});
+
+// Copy dari daftar riwayat dan tampilkan sukses
+$(document).on('click', '.copy-btn', function () {
+  const nomor = $(this).data('number');
+  navigator.clipboard.writeText(nomor).then(() => {
+    $('#successModal .modal-title').text('Nomor Disalin');
+    $('#successModal .modal-body p').text(`Nomor ${nomor} berhasil disalin!`);
+    $('#successModal').modal('show');
+    setTimeout(() => $('#successModal').modal('hide'), 3000);
+
+    const successSound = document.getElementById('success-sound');
+    if (successSound) {
+      successSound.volume = 1.0;
+      successSound.currentTime = 0;
+      successSound.play();
+    }
+  });
 });
                       
       $('#toggle-theme').click(function () {
