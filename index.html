@@ -538,7 +538,11 @@ $(document).on('click', '.copy-btn', function () {
 
   navigator.clipboard.writeText(nomor).then(() => {
     // Ganti ikon jadi centang
-    $icon.removeClass('fa-copy').addClass('fa-check');
+    $icon.attr('class', 'fas fa-check');
+    setTimeout(() => {
+  $icon.attr('class', 'fas fa-copy');
+}, 2000);
+    
 
     // Tampilkan modal sukses
     $('#successModal .modal-title').text('Nomor Disalin');
