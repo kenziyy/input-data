@@ -19,7 +19,7 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      font-family: 'PT Sans', sans-serif;
+      font-family: 'PT Sans', Arial, sans-serif;
       background-color: #ffffff;
       transition: background-color 0.5s ease, color 0.5s ease;
     }
@@ -539,7 +539,6 @@ $(document).on('click', '.copy-btn', function () {
   navigator.clipboard.writeText(nomor).then(() => {
     // Ganti ikon jadi centang
     $icon.attr('class', 'fas fa-check');
-    setTimeout(() => {
     
 
     // Tampilkan modal sukses
